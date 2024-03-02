@@ -1,0 +1,5 @@
+---
+- name: "this ansible playbook for installation and deploy configration on nginx"
+  hosts: app
+  roles:
+    - nginx-app

@@ -1,6 +1,6 @@
 ---
 - name: "The ansible playbook checking the connection"
-  host: app
+  hosts: app
   tasks:
     - name: "checking the connection"
       ping:

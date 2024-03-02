@@ -19,7 +19,7 @@ pipeline
         }
         stage("ansible check connection") {
             steps {
-                sh  ''' ansible-playbook nginx-connection.yml'''
+                sh  ''' ansible-playbook nginx.yml'''
             }
         }      
 
