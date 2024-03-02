@@ -17,7 +17,11 @@ pipeline
                 sh  '''hostname ; pwd '''
             }
         }
-      
+        stage("ansible check connection") {
+            steps {
+                sh  ''' ansible-playbook nginx-connection.yml'''
+            }
+        }      
 
     }
 
