@@ -13,6 +13,18 @@ pipeline
           )
         }
       }
+      stage("check current direct") {
+        steps {
+          sh  ''' pwd '''
+        }
+      }
+      stage("check current direct") {
+        steps {
+          sh  ''' ansible-playbook nginx-connection.yml '''
+        }
+      }
+
+
     }
 
 
