@@ -14,7 +14,7 @@ pipeline
         }
         stage("check current direct") {
             steps {
-                sh  ''' pwd '''
+                sh  '''hostname ; pwd '''
             }
         }
       
