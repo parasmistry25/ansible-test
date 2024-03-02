@@ -1,0 +1,4 @@
+Steps to install prerequisite using Ansible
+
+- Move inside Prerequisite folder and run below command to install prerequisite on target server.
+  ansible-playbook --inventory Inventory/hosts installprerequisite.yml
