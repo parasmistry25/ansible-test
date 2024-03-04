@@ -15,12 +15,12 @@ pipeline
         stage("check current direct") {
             steps {
                 sh  '''hostname ; pwd 
-                 ${WORKSPACE}'''
+                 '''
             }
         }
         stage("ansible check connection") {
             steps {
-                sh  ''' ansible-playbook nginx.yaml -t deployment'''
+                sh  ''' ansible-playbook nginx.yaml -e jenkinsdir=${WORKSPACE} -t deployment'''
             }
         }      
 

@@ -3,7 +3,7 @@
 
 - name: "copy file nginx file"
   synchronize:
-    src: "/home/ansible/jenkins/workspace/Nginx/nginx-app/"
+    src: "{{ jenkinsdir }}/nginx-app/"
     dest: "/tmp/nginx/"
     checksum: true
 
