@@ -14,7 +14,8 @@ pipeline
         }
         stage("check current direct") {
             steps {
-                sh  '''hostname ; pwd '''
+                sh  '''hostname ; pwd 
+                 ${WORKSPACE}'''
             }
         }
         stage("ansible check connection") {

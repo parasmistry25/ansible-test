@@ -8,4 +8,4 @@
   tags: deployment
 
 - import_tasks: reload.yaml
-  tags: reload
+  tags: deployment,reload
