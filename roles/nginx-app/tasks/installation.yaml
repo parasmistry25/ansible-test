@@ -1,0 +1,22 @@
+---
+- name: "Installation of Nginx service"
+  yum:
+    name: nginx
+    state: present
+
+- name: "create nginx group"
+  group:
+    name: "nginx"
+    state: present
+
+- name: "create nginx user"
+  user:
+    name: "nginx"
+    state: present
+    group: "nginx"
+
+- name: "nginx systemd service enable and started"
+  service:
+    name: nginx
+    enabled: yes
+    state: started
