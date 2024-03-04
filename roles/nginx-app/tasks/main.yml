@@ -1,6 +1,23 @@
 ---
 # tasks file for nginx-app
 - name: "copy file nginx file"
-  copy: 
+  copy:
     src: "/home/ansible/jenkins/workspace/Nginx/nginx-app/nginx.conf"
     dest: "/tmp/nginx.conf"
+
+- name: "Checking the Nginx Configuration file"
+  command: "nginx -t"
+  register: "nginxcheck"
+  ignore_errors: true
+
+- debug:
+    msg: "Please check Nginx configuration
+          {{ nginxcheck.stderr_lines }}"
+  when: "nginxcheck.rc == 1"
+
+- debug:
+    msg: "Nginx configration file looks good 
+          {{ nginxcheck.stderr_lines }}"
+
+- name: "reload the Nginx service configuration "
+  command: "nginx -s reload"
