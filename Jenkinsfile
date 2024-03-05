@@ -9,7 +9,7 @@ pipeline
           checkout([$class: 'GitSCM',
           branches: [[name: '*/master']],
           extensions: [],
-          userRemoteConfigs: [[url: 'git@github.com:parasmistry25/Nginx.git']]])
+          userRemoteConfigs: [[url: 'https://github.com/parasmistry25/Nginx.git']]])
             }
         }
         stage("Checkout Ansible Code") {
