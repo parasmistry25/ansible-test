@@ -4,7 +4,15 @@ pipeline
         label 'ansible'
     }
      stages {
-        stage("Checkout") {
+        stage("Checkout Nginx Configration") {
+      	steps {
+          checkout([$class: 'GitSCM',
+          branches: [[name: '*/master']],
+          extensions: [],
+          userRemoteConfigs: [[url: 'git@github.com:parasmistry25/Nginx.git']]])
+            }
+        }
+        stage("Checkout Ansible Code") {
       	steps {
           checkout([$class: 'GitSCM',
           branches: [[name: '*/master']],
@@ -12,12 +20,7 @@ pipeline
           userRemoteConfigs: [[url: 'https://github.com/parasmistry25/ansible-test.git']]])
             }
         }
-        stage("check current direct") {
-            steps {
-                sh  '''hostname ; pwd 
-                 '''
-            }
-        }
+       
         stage("ansible check connection") {
             steps {
                 sh  ''' ansible-playbook nginx.yaml -e jenkinsdir=${WORKSPACE} -t ${mode}'''
