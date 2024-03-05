@@ -14,10 +14,14 @@ pipeline
         }
         stage("Checkout nginx Code") {
       	  steps {
+          sh 'mkdir nginx'
+          dir("nginx")
+          {
           checkout([$class: 'GitSCM',
           branches: [[name: '*/master']],
           extensions: [],
           userRemoteConfigs: [[url: 'https://github.com/parasmistry25/Nginx.git']]])
+              }
             }
         }
        
