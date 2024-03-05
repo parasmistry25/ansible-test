@@ -1,7 +1,0 @@
----
-- name: install prerequisite
-  hosts: all
-  become: yes
-  remote_user: ec2-user
-  roles:
-    - InstallPrerequisite

@@ -4,6 +4,9 @@
 - import_tasks: installation.yaml
   tags: installation
 
+- improt_tasks: configuration.yaml
+  tags: configuration
+  
 - import_tasks: deployment.yaml
   tags: deployment
 

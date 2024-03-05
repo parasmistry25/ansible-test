@@ -10,7 +10,7 @@
 
     - name: "copy file nginx file"
       synchronize:
-        src: "{{ jenkinsdir }}/nginx-app/"
+        src: "{{ jenkinsdir }}/nginx/nginx-app/"
         dest: "/etc/nginx/"
         checksum: true
 

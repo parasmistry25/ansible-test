@@ -25,13 +25,12 @@ pipeline
             }
         }
        
-        // stage("ansible check connection") {
-        //     steps {
-        //         sh  ''' ansible-playbook nginx.yaml -e jenkinsdir=${WORKSPACE} -t ${mode}'''
-        //     }
-        // }      
-
-    }
+        stage("ansible check connection") {
+            steps {
+                sh  ''' ansible-playbook nginx.yaml -e jenkinsdir=${WORKSPACE} -t ${mode}'''
+            }
+        }      
+  }
 
 }
 
