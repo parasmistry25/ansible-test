@@ -1,0 +1,16 @@
+---
+- name: "The ansible playbook checking the connection"
+  hosts: local
+  connection: local
+  tasks:
+    - name: "download git repo"
+      git:
+        repo: "https://github.com/parasmistry25/Nginx.git"
+        dest: "./nginx"
+        version: master
+
+    - name: "change permission"
+      file:
+        path: "./nginx"
+        owner: ansible
+        group: ansible

@@ -1,3 +1,6 @@
+[local]
+localhost ssh
+
 [app]
 192.168.56.120
 
