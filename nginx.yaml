@@ -1,6 +1,6 @@
 ---
 - name: "this ansible playbook for installation and deploy configration on nginx"
-  hosts: "{{ type }}"
+  hosts: app
   pre_task:
     - name: "download git repo"
       git:
@@ -8,12 +8,13 @@
         dest: "./nginx"
         version: master
       delegate_to: 127.0.0.1
-    - name: change permission
+    
+    - name: "change permission"
       file:
         path: "./nginx"
         owner: ansible 
         group: ansible
 
   roles:
-    - nginx-"{{ type }}"
+    - nginx-app
           
