@@ -1,5 +1,5 @@
 [local]
-localhost ssh
+localhost
 
 [app]
 192.168.56.120
