@@ -1,0 +1,29 @@
+---
+# tasks deployment file for nginx-app
+- name: "Deploy the nginx server configuation"
+  block:
+    - name: "backup of currnet Configration"
+      copy:
+        src: "/etc/nginx/"
+        dest: "/tmp/nginx-backup/"
+        remote_src: yes
+
+    - name: "copy file nginx file"
+      synchronize:
+        src: "{{ jenkinsdir }}/nginx/nginx-app/"
+        dest: "/etc/nginx/"
+        checksum: true
+
+    - name: "Checking the Nginx Configuration file"
+      command: "nginx -t"
+
+  rescue:
+    - name: "Roll-back the Nginx deployment"
+      copy:
+        src: "/tmp/nginx-backup/"
+        dest: "/etc/nginx/"
+        remote_src: yes
+
+    - name: "Nginx Deployment Failed"
+      fail:
+        msg: "nginx Deployment Failed due to An Error's on New configration"

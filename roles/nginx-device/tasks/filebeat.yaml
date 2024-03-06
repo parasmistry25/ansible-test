@@ -1,0 +1,40 @@
+---
+# instllation and configuration filebeat
+- name: Importing Elasticsearch Yum repo signin key
+  rpm_key:
+    key: https://packages.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add repository for filebeat
+  yum_repository:
+    name: elastic
+    description: Elastic Beats Repository
+    baseurl: https://artifacts.elastic.co/packages/8.x/yum
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    gpgcheck: yes
+
+- name: Install filebeat
+  yum:
+    name: filebeat
+    state: latest
+
+- name: Copy Filebeat yml
+  copy:
+    src: "filebeat.yml"
+    dest: /etc/filebeat/filebeat.yml
+
+- name: Copy Filebeat variables file
+  copy:
+    src: "variables.conf"
+    dest: /etc/filebeat
+
+- name: Copy Filebeat service file
+  copy:
+    src: "filebeat.service"
+    dest: /usr/lib/systemd/system
+
+- name: Enabling filebeat service on boot and starting
+  service:
+    name: filebeat
+    state: restarted
+    enabled: yes

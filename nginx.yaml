@@ -1,5 +1,5 @@
 ---
 - name: "this ansible playbook for installation and deploy configration on nginx"
-  hosts: app
+  hosts: "{{ type }}"
   roles:
-    - nginx-app
+    - "nginx-{{ type }}"
