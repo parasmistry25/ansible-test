@@ -1,7 +1,7 @@
 ---
 - name: "this ansible playbook for installation and deploy configration on nginx"
   hosts: device
-  pre_task:
+  pre_tasks:
     - name: "download git repo"
       git:
         repo: "https://github.com/parasmistry25/Nginx.git"
