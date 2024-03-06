@@ -1,0 +1,20 @@
+---
+- name: "this ansible playbook for installation and deploy configration on nginx"
+  hosts: device
+  pre_task:
+    - name: "download git repo"
+      git:
+        repo: "https://github.com/parasmistry25/Nginx.git"
+        dest: "./nginx"
+        version: master
+      delegate_to: 127.0.0.1
+    
+    - name: "change permission"
+      file:
+        path: "./nginx"
+        owner: ansible 
+        group: ansible
+
+  roles:
+    - nginx-device
+          

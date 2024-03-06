@@ -15,7 +15,7 @@ pipeline
               
         stage("ansible check connection") {
             steps {
-                sh  ''' ansible-playbook nginx.yaml -e jenkinsdir=${WORKSPACE} -e type=${type} -t ${mode} '''
+                sh  ''' ansible-playbook ${type} -e jenkinsdir=${WORKSPACE} -t ${mode} '''
             }
         }      
   }
