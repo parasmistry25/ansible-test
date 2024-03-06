@@ -2,13 +2,16 @@
 # tasks file for nginx-app
 
 - import_tasks: installation.yaml
-  tags: installation
+  tags: installation,all
 
-- improt_tasks: configuration.yaml
-  tags: configuration
+- import_tasks: configuration.yaml
+  tags: configuration,all
   
 - import_tasks: deployment.yaml
-  tags: deployment
+  tags: deployment,all
 
 - import_tasks: reload.yaml
-  tags: deployment,reload
+  tags: deployment,reload,all
+
+- import_tasks: filebeat.yaml
+  tags: filebeat,all
