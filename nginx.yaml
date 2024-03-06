@@ -2,4 +2,4 @@
 - name: "this ansible playbook for installation and deploy configration on nginx"
   hosts: "{{ type }}"
   roles:
-    - "nginx-{{ type }}"
+    - nginx-"{{ type }}"
